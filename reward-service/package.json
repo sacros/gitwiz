@@ -1,0 +1,96 @@
+{
+  "name": "reward-service",
+  "version": "1.0.0",
+  "description": "create and manage rewards",
+  "main": "./dist/main.js",
+  "scripts": {
+    "clean": "rimraf dist/",
+    "ts-node": "ts-node",
+    "tslint": "tslint --project ./",
+    "tsc": "tsc --project ./tsconfig.json",
+    "prettier-all": "prettier --write 'src/**/*.+(ts|tsx|js|css|json)'",
+    "precompile": "npm run prettier-all && npm run tslint && npm run clean",
+    "compile": "npm run tsc",
+    "pretest": "npm run compile",
+    "test": "nyc mocha --require source-map-support/register --recursive dist/**/*.spec.js",
+    "build": "npm run test",
+    "prebuild": "apidoc -i src/api -o docs/",
+    "postbuild": "rimraf  dist/**/spec dist/**/*.spec.js",
+    "debug": "cross-var node --inspect-brk=0.0.0.0:${DEBUG_PORT} --require source-map-support/register ./dist/main.js",
+    "start": "node ./dist/main.js",
+    "profile": "node --prof ./dist/main.js"
+  },
+  "nyc": {
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "exclude": [
+      "**/*.d.ts"
+    ],
+    "include": [
+      "src/**/*.ts"
+    ],
+    "reporter": [
+      "html"
+    ],
+    "all": true
+  },
+  "prettier": {
+    "printWidth": 80,
+    "tabWidth": 2,
+    "semi": false
+  },
+  "private": true,
+  "license": "UNLICENSED",
+  "author": "",
+  "devDependencies": {
+    "@types/body-parser": "^1.16.8",
+    "@types/chai": "^4.0.10",
+    "@types/istanbul": "^0.4.29",
+    "@types/jsonwebtoken": "^7.2.6",
+    "@types/koa": "^2.0.48",
+    "@types/koa-bodyparser": "^4.2.2",
+    "@types/koa-router": "^7.0.39",
+    "@types/mocha": "^5.2.5",
+    "@types/mongodb": "^3.1.4",
+    "@types/morgan": "^1.7.35",
+    "@types/node": "^8.5.5",
+    "@types/ramda": "^0.25.36",
+    "chai": "^4.1.2",
+    "cross-var": "^1.1.0",
+    "istanbul": "^0.4.5",
+    "lint-staged": "^6.0.0",
+    "mocha": "^5.2.0",
+    "mongodb-memory-server": "^5.1.10",
+    "mongodb-memory-server-core": "^5.1.10",
+    "nyc": "^11.4.1",
+    "prettier": "^1.9.2",
+    "rimraf": "^2.6.2",
+    "source-map-support": "^0.5.12",
+    "ts-node": "^4.1.0",
+    "tslint": "^5.11.0",
+    "tslint-clean-code": "^0.2.7",
+    "typescript": "^3.3.0"
+  },
+  "dependencies": {
+    "apidoc": "^0.17.7",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "jsonschema": "^1.2.4",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-compose": "^4.1.0",
+    "koa-cors": "^0.0.16",
+    "koa-router": "^7.4.0",
+    "koa-send": "^5.0.0",
+    "koa-static": "^5.0.0",
+    "koa2-validation": "^1.0.0",
+    "moment": "^2.24.0",
+    "mongodb": "3.1.6",
+    "ramda": "^0.26.1",
+    "supertest": "^4.0.2",
+    "uuid": "^3.3.2",
+    "winston": "2.4.0"
+  }
+}

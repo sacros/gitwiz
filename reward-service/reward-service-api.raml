@@ -1,0 +1,1158 @@
+#%RAML 1.0
+---
+title: reward-service API
+baseUri: http://localhost:3002/reward-service
+version: v1
+
+/get:
+    get:
+        description: Retrieve all reward schemes available
+        responses:
+            200:
+                body:
+                    application/json:
+                        example: |
+                            {
+                                "success": true,
+                                "data": [
+                                    {
+                                        "_id": "5d6d1d511793e3267ca68aa5",
+                                        "skuCode": "battle-s0565a-01-l4",
+                                        "points": 2,
+                                        "conversionUnit": "INR",
+                                        "conversionRatio": 1,
+                                        "startDate": 1564572231,
+                                        "endDate": 4064572231,
+                                        "provider": "ITC",
+                                        "dispatchToLevel": 4,
+                                        "scheme": {
+                                            "type": "milestone",
+                                            "milestone": 2,
+                                            "termination": 0
+                                        },
+                                        "description": "",
+                                        "totalCount": 0,
+                                        "claimedCount": 0,
+                                        "onlyForApprovedUsers": false,
+                                        "redeemApprovalRequired": false,
+                                        "lastModified": 1567432017
+                                    },
+                                    {
+                                        "_id": "5d6d29eeaa02e215eff56d9b",
+                                        "skuCode": "battle-s0565a-01-l5",
+                                        "points": 2,
+                                        "conversionUnit": "INR",
+                                        "conversionRatio": 1,
+                                        "startDate": 1564572231,
+                                        "endDate": 4064572231,
+                                        "provider": "ITC",
+                                        "dispatchToLevel": 4,
+                                        "scheme": {
+                                            "type": "milestone",
+                                            "redeemType": "inkind",
+                                            "milestone": 2,
+                                            "termination": 0
+                                        },
+                                        "description": "",
+                                        "totalCount": 0,
+                                        "claimedCount": 0,
+                                        "onlyForApprovedUsers": false,
+                                        "redeemApprovalRequired": false,
+                                        "lastModified": 1567435246
+                                    },
+                                    {
+                                        "_id": "5d6d2a1daa02e215eff56d9c",
+                                        "skuCode": "battle-s0565a-01-l6",
+                                        "points": 2,
+                                        "conversionUnit": "INR",
+                                        "conversionRatio": 1,
+                                        "startDate": 1564572231,
+                                        "endDate": 4064572231,
+                                        "provider": "ITC",
+                                        "dispatchToLevel": 4,
+                                        "scheme": {
+                                            "type": "milestone",
+                                            "redeemType": "none",
+                                            "milestone": 2,
+                                            "termination": 0
+                                        },
+                                        "description": "",
+                                        "totalCount": 0,
+                                        "claimedCount": 1,
+                                        "onlyForApprovedUsers": false,
+                                        "redeemApprovalRequired": true,
+                                        "lastModified": 1567435293
+                                    }
+                                ],
+                                "pagination": {
+                                    "currentPage": 1,
+                                    "pageLimit": 20
+                                }
+                            }
+    /{skuCode}:
+        get:
+            description: Retrieve a specific reward schemes
+            responses:
+                200:
+                    body:
+                        application/json:
+                            example: |
+                                {
+                                    "success": true,
+                                    "data": [
+                                        {
+                                            "_id": "5d6d2a1daa02e215eff56d9c",
+                                            "skuCode": "battle-s0565a-01-l6",
+                                            "points": 2,
+                                            "conversionUnit": "INR",
+                                            "conversionRatio": 1,
+                                            "startDate": 1564572231,
+                                            "endDate": 4064572231,
+                                            "provider": "ITC",
+                                            "dispatchToLevel": 4,
+                                            "scheme": {
+                                                "type": "milestone",
+                                                "redeemType": "none",
+                                                "milestone": 2,
+                                                "termination": 0
+                                            },
+                                            "description": "",
+                                            "totalCount": 0,
+                                            "claimedCount": 1,
+                                            "onlyForApprovedUsers": false,
+                                            "redeemApprovalRequired": true,
+                                            "lastModified": 1567435293
+                                        }
+                                    ],
+                                    "pagination": {
+                                        "currentPage": 1,
+                                        "pageLimit": 20
+                                    }
+                                }
+/create:
+    post:
+        description: Creates new reward scheme
+        body:
+            application/json:
+                example: |
+                    {
+                        "skuCode": "test-sku-code",
+                        "points": 2,
+                        "conversionRatio": 1,
+                        "conversionUnit": "INR",
+                        "startDate": 1564572231,
+                        "endDate": 1864572231,
+                        "provider": "ITC",
+                        "dispatchToLevel": 4,
+                        "scheme": {
+                            "type": "propagating",
+                            "termination": 2
+                        }
+                    }
+
+        responses:
+            201:
+                body:
+                    application/json:
+                        example: |
+                            {
+                                "success": true,
+                                "message": "Successfully created",
+                                "data": [
+                                    {
+                                        "skuCode": "battle-s0565a-01-l6",
+                                        "points": 2,
+                                        "conversionUnit": "INR",
+                                        "conversionRatio": 1,
+                                        "startDate": 1564572231,
+                                        "endDate": 4064572231,
+                                        "provider": "ITC",
+                                        "dispatchToLevel": 4,
+                                        "scheme": {
+                                            "type": "milestone",
+                                            "redeemType": "none",
+                                            "milestone": 2,
+                                            "termination": 0
+                                        },
+                                        "description": "",
+                                        "totalCount": 0,
+                                        "claimedCount": 0,
+                                        "onlyForApprovedUsers": false,
+                                        "redeemApprovalRequired": true,
+                                        "lastModified": 1567435293,
+                                        "_id": "5d6d2a1daa02e215eff56d9c"
+                                    }
+                                ]
+                            }
+            409:
+                body:
+                    application/json:
+                        example: |
+                            {
+                                "success": false,
+                                "error": {
+                                    "errorCode": "ERR_SCHEME_EXISTS",
+                                    "errorMessage": "The scheme already exists"
+                                }
+                            }
+                            
+
+/remove:
+    /{id}:  
+        delete:
+            description: Deletes a specific reward scheme by its id
+            responses:
+                202:
+                    body:
+                        application/json:
+                            example: |
+                                {
+                                    "success": true,
+                                    "message": "Scheme Succesfully deleted"
+                                }
+                409:
+                    body:
+                        application/json:
+                            example: |
+                                {
+                                    "success": false,
+                                    "error": {
+                                        "errorCode": "SCHEME_DISPATCHED",
+                                        "errorMessage": "Rewards has been dispatched in this scheme"
+                                    }
+                                }
+/rewards/dispatch:
+    post:
+        description: Dispatches a new reward
+        body:
+            application/json:
+                example: |
+                    {
+                        "scanevents": [{
+                            "user": {
+                                "id": "merajahmadsiddiqui",
+                                "level": 4,
+                                "context": "test-user-context"
+                            },
+                            "product": {
+                                "uid": "product4",
+                                "sku": {
+                                    "code": "milestone"
+                                }
+                            },
+                            "scanId": "somescanId"
+                        }]
+                    }
+                            responses:
+                                200:
+                                    body:
+                                        application/json:
+                                            example: |
+                                                {
+                                                    "success": false,
+                                                    "data": [],
+                                                    "failed": [
+                                                        {
+                                                        "error": "SCHEME_NOT_EXIST",
+                                                        "object": [
+                                                            {
+                                                            "user": {
+                                                                "id": "5ce5377ca550878c4a807434",
+                                                                "level": 4
+                                                            },
+                                                            "product": {
+                                                                "id": 1409578597,
+                                                                "sku": {
+                                                                "code": "battle-s0565a-01-l5",
+                                                                "name": "BATTLE"
+                                                                }
+                                                            },
+                                                            "scanId": "e36e1d00-00da-45f2-8454-8fbe3056c1c8"
+                                                            }
+                                                        ]
+                                                        },
+                                                        {
+                                                        "error": "PRODUCT_EXIST",
+                                                        "object": [
+                                                            {
+                                                            "user": {
+                                                                "id": "5ce5377ca550878c4a807434",
+                                                                "level": 4
+                                                            },
+                                                            "product": {
+                                                                "id": 5641863709,
+                                                                "sku": {
+                                                                "code": "battle-s0565a-01-l5",
+                                                                "name": "BATTLE"
+                                                                }
+                                                            },
+                                                            "scanId": "e36e1d00-00da-45f2-8454-8fbe3056c1c9"
+                                                            }
+                                                        ]
+                                                        }
+                                                    ]
+                                                }
+/approve:
+    post:
+        description: Approve the redeemability of a reward
+        body:
+            application/json:
+                          example: |
+                                {
+                                    "rewardCodes": ["RC-D2E66", "RC-D1168", "RC-DA8EB"],
+                                    "provider": "ITC"
+                                }
+        responses:
+            200:
+                body:
+                    application/json:
+                        example: |
+                            {
+                                "success": true,
+                                "message": "Reward approved successfully"
+                            }
+            404:
+                body:
+                    application/json:
+                        example: |
+                            {
+                                "success": false,
+                                "error": {
+                                    "errorCode": "REWARD_NOT_EXIST",
+                                    "errorMessage": "No such reward found"
+                                }
+                            }
+/reject:
+    post:
+        description: Reject the redeemability of a reward
+        body:
+            application/json:
+                          example: |
+                                {
+                                    "rewardCodes": ["RC-D2E66", "RC-D1168", "RC-DA8EB"],
+                                    "provider": "ITC"
+                                }
+        responses:
+            200:
+                body:
+                    application/json:
+                        example: |
+                            {
+                                "success": true,
+                                "message": "Reward rejected successfully"
+                            }
+            404:
+                body:
+                    application/json:
+                        example: |
+                            {
+                                "success": false,
+                                "error": {
+                                    "errorCode": "REWARD_NOT_EXIST",
+                                    "errorMessage": "No such reward found"
+                                }
+                            }
+/redeem:
+    post:
+        description: Redeems a reward
+        body:
+            application/json:
+                example: |
+                    {
+                        "rewardCodes": ["RC-2AADF"],
+                        "user": {
+                            "level": 3,
+                            "id": "5bc08f3973562c001028938f"
+                        }
+                    }
+        responses:
+            200:
+                body:
+                    application/json:
+                        example: |
+                            {
+                                "success": true,
+                                "data": {
+                                    "redeemed": {
+                                    "rewardCodes": [
+                                        "RC-2AADF"
+                                    ],
+                                    "dispatched": false,
+                                    "aggregatedCode": "RC-FE87B",
+                                    "user": {
+                                        "for": {
+                                        "id": "5ce5377ca550878c4a807434",
+                                        "level": 4
+                                        },
+                                        "by": {
+                                        "level": 3,
+                                        "id": "5bc08f3973562c001028938f"
+                                        }
+                                    },
+                                    "points": 4,
+                                    "_id": "5d6e17d92b2617772d40f472"
+                                    },
+                                    "failed": []
+                                },
+                                "message": "Reward(s) successfully redeemed"
+                            }
+            409:
+                body:
+                    application/json:
+                        example: |
+                            {
+                                "success": false,
+                                "error": {
+                                    "errorCode": "REWARD_CLAIM",
+                                    "errorMessage": "The provided reward code is not claimable or is claimed"
+                                }
+                            }
+            403:
+                body:
+                    application/json:
+                        example: |
+                            {
+                                "success": false,
+                                "error": {
+                                    "errorCode": "INVALID_USER",
+                                    "errorMessage": "The user is not authorized to redeem this reward"
+                                }
+                            }
+/redeem-inkind:
+    post:
+        description: Redeems an in-kind reward
+        body:
+            application/json:
+                example: |
+                    {
+                        "rewardCode": "RC-2C7E7",
+                        "user": {
+                            "level": 3,
+                            "id": "5bc08f3973562c001028938f"
+                        },
+                        "product": {
+                            "expiry": "",
+                            "encoding": "https://staging-o4s.in/v/e/1.1.84t_IN.F",
+                            "active": false,
+                            "parent": "",
+                            "children": [],
+                            "enabledAuthenticationModes": ["sms", "web", "app"],
+                            "sku": {
+                                "code": "battle-s0565a-01-l4",
+                                "name": "BATTLE",
+                                "description": "",
+                                "images": {
+                                    "thumbnail": "",
+                                    "medium": "",
+                                    "high": ""
+                                },
+                                "packagingLevel": 1
+                            },
+                            "ownership": {
+                                "transferRequest": {
+                                    "isActive": false,
+                                    "to": {
+                                        "_id": "5b97af643e82c870af6c7f20",
+                                        "phoneNumber": "+918171703734",
+                                        "type": "MANUFACTURER",
+                                        "name": "Atul Mittal",
+                                        "address": {
+                                            "country": "India",
+                                            "state": "Uttarakhand",
+                                            "city": "Dehradun",
+                                            "district": "Sealqui",
+                                            "address": {
+                                                "line1": "Campus Activewear Pvt. Ltd.",
+                                                "line2": "C9 & C10, Sealqui Industrial Area"
+                                            },
+                                            "pincode": "248011"
+                                        },
+                                        "companyCode": "campus-shoes",
+                                        "level": 0
+                                    },
+                                    "from": {
+                                        "_id": "5b97af643e82c870af6c7f20",
+                                        "phoneNumber": "+918171703734",
+                                        "type": "MANUFACTURER",
+                                        "name": "Atul Mittal",
+                                        "address": {
+                                            "country": "India",
+                                            "state": "Uttarakhand",
+                                            "city": "Dehradun",
+                                            "district": "Sealqui",
+                                            "address": {
+                                                "line1": "Campus Activewear Pvt. Ltd.",
+                                                "line2": "C9 & C10, Sealqui Industrial Area"
+                                            },
+                                            "pincode": "248011"
+                                        },
+                                        "companyCode": "campus-shoes",
+                                        "level": 0
+                                    },
+                                    "mode": "NONE",
+                                    "status": "NONE",
+                                    "confirmation": "NONE"
+                                },
+                                "owner": {
+                                    "_id": "5b97af643e82c870af6c7f20",
+                                    "phoneNumber": "+918171703734",
+                                    "type": "MANUFACTURER",
+                                    "name": "Atul Mittal",
+                                    "address": {
+                                        "country": "India",
+                                        "state": "Uttarakhand",
+                                        "city": "Dehradun",
+                                        "district": "Sealqui",
+                                        "address": {
+                                            "line1": "Campus Activewear Pvt. Ltd.",
+                                            "line2": "C9 & C10, Sealqui Industrial Area"
+                                        },
+                                        "pincode": "248011"
+                                    },
+                                    "companyCode": "campus-shoes",
+                                    "level": 0
+                                }
+                            },
+                            "ownershipHistory": [],
+                            "hasReward": false,
+                            "_id": "5b9d097058a914001028a75b",
+                            "company": {
+                                "code": "campus-shoes",
+                                "numericCode": 15
+                            },
+                            "packagingLevel": 1,
+                            "serialNo": 15110131154,
+                            "productId": 8671716503,
+                            "client": "campus-shoes",
+                            "productDetails": {
+                                "skuCode": "battle-s0565a-01-l4"
+                            }
+                        }
+                    }
+        responses:
+            200:
+                body:
+                    application/json:
+                        example: |
+                            {
+                                "success": true,
+                                "data": {
+                                    "rewardCodes": "RC-2C7E7",
+                                    "dispatched": false,
+                                    "aggregatedCode": "RC-72216",
+                                    "user": {
+                                        "for": {
+                                            "id": "5ce5377ca550878c4a807434",
+                                            "level": 4
+                                        },
+                                        "by": {
+                                            "level": 3,
+                                            "id": "5bc08f3973562c001028938f"
+                                        }
+                                    },
+                                    "points": 4,
+                                    "product": {
+                                        "expiry": "",
+                                        "encoding": "https://staging-o4s.in/v/e/1.1.84t_IN.F",
+                                        "active": false,
+                                        "parent": "",
+                                        "children": [],
+                                        "enabledAuthenticationModes": [
+                                            "sms",
+                                            "web",
+                                            "app"
+                                        ],
+                                        "sku": {
+                                            "code": "battle-s0565a-01-l4",
+                                            "name": "BATTLE",
+                                            "description": "",
+                                            "images": {
+                                                "thumbnail": "",
+                                                "medium": "",
+                                                "high": ""
+                                            },
+                                            "packagingLevel": 1
+                                        },
+                                        "ownership": {
+                                            "transferRequest": {
+                                                "isActive": false,
+                                                "to": {
+                                                    "_id": "5b97af643e82c870af6c7f20",
+                                                    "phoneNumber": "+918171703734",
+                                                    "type": "MANUFACTURER",
+                                                    "name": "Atul Mittal",
+                                                    "address": {
+                                                        "country": "India",
+                                                        "state": "Uttarakhand",
+                                                        "city": "Dehradun",
+                                                        "district": "Sealqui",
+                                                        "address": {
+                                                            "line1": "Campus Activewear Pvt. Ltd.",
+                                                            "line2": "C9 & C10, Sealqui Industrial Area"
+                                                        },
+                                                        "pincode": "248011"
+                                                    },
+                                                    "companyCode": "campus-shoes",
+                                                    "level": 0
+                                                },
+                                                "from": {
+                                                    "_id": "5b97af643e82c870af6c7f20",
+                                                    "phoneNumber": "+918171703734",
+                                                    "type": "MANUFACTURER",
+                                                    "name": "Atul Mittal",
+                                                    "address": {
+                                                        "country": "India",
+                                                        "state": "Uttarakhand",
+                                                        "city": "Dehradun",
+                                                        "district": "Sealqui",
+                                                        "address": {
+                                                            "line1": "Campus Activewear Pvt. Ltd.",
+                                                            "line2": "C9 & C10, Sealqui Industrial Area"
+                                                        },
+                                                        "pincode": "248011"
+                                                    },
+                                                    "companyCode": "campus-shoes",
+                                                    "level": 0
+                                                },
+                                                "mode": "NONE",
+                                                "status": "NONE",
+                                                "confirmation": "NONE"
+                                            },
+                                            "owner": {
+                                                "_id": "5b97af643e82c870af6c7f20",
+                                                "phoneNumber": "+918171703734",
+                                                "type": "MANUFACTURER",
+                                                "name": "Atul Mittal",
+                                                "address": {
+                                                    "country": "India",
+                                                    "state": "Uttarakhand",
+                                                    "city": "Dehradun",
+                                                    "district": "Sealqui",
+                                                    "address": {
+                                                        "line1": "Campus Activewear Pvt. Ltd.",
+                                                        "line2": "C9 & C10, Sealqui Industrial Area"
+                                                    },
+                                                    "pincode": "248011"
+                                                },
+                                                "companyCode": "campus-shoes",
+                                                "level": 0
+                                            }
+                                        },
+                                        "ownershipHistory": [],
+                                        "hasReward": false,
+                                        "_id": "5b9d097058a914001028a75b",
+                                        "company": {
+                                            "code": "campus-shoes",
+                                            "numericCode": 15
+                                        },
+                                        "packagingLevel": 1,
+                                        "serialNo": 15110131154,
+                                        "productId": 8671716503,
+                                        "client": "campus-shoes",
+                                        "productDetails": {
+                                            "skuCode": "battle-s0565a-01-l4"
+                                        }
+                                    }
+                                },
+                                "message": "Reward successfully redeemed"
+                            }
+            403:
+                body:
+                    application/json:
+                        example: |
+                            {
+                                "success": false,
+                                "error": {
+                                    "errorCode": "REWARD_CLAIM",
+                                    "errorMessage": "The provided reward code is not claimable or is claimed"
+                                }
+                            }
+            409:
+                body:
+                    application/json:
+                        example: |
+                            {
+                                "success": false,
+                                "error": {
+                                    "errorCode": "NOT_INKIND",
+                                    "errorMessage": "This reward is not redeemable as inkind"
+                                }
+                            }
+/get-approved:
+    get:
+        description: Retrieve all approved rewards by a provider
+        queryParameters: 
+            provider:
+                description: provider name
+                type: string
+                required: true
+        responses:
+            200:
+                body:
+                    application/json:
+                        example: |
+                            {
+                                "success": true,
+                                "data": [
+                                    {
+                                        "_id": "5d6d1d771793e3267ca68aa6",
+                                        "scheme": {
+                                            "_id": "5d6d1d511793e3267ca68aa5",
+                                            "skuCode": "battle-s0565a-01-l4",
+                                            "points": 2,
+                                            "conversionUnit": "INR",
+                                            "conversionRatio": 1,
+                                            "onlyForApprovedUsers": false,
+                                            "redeemApprovalRequired": false,
+                                            "dispatchToLevel": 4,
+                                            "provider": "ITC",
+                                            "scheme": {
+                                                "type": "milestone",
+                                                "redeemType": "none",
+                                                "milestone": 2,
+                                                "termination": 0
+                                            }
+                                        },
+                                        "user": {
+                                            "id": "5ce5377ca550878c4a807434",
+                                            "level": 4
+                                        },
+                                        "productId": [
+                                            1409578594,
+                                            5641863707
+                                        ],
+                                        "skuCode": "battle-s0565a-01-l4",
+                                        "scanUUID": [
+                                            "e36e1d00-00da-45f2-8454-8fbe3056c1c8",
+                                            "e36e1d00-00da-45f2-8454-8fbe3056c1c9"
+                                        ],
+                                        "approved": true,
+                                        "isClaimed": true,
+                                        "isClaimable": true,
+                                        "rewardCode": "RC-29154",
+                                        "points": 4,
+                                        "progress": 100
+                                    }
+                                ],
+                                "pagination": {
+                                    "currentPage": 1,
+                                    "pageLimit": 20
+                                }
+                            }
+/get-pending:
+    get:
+        description: Retrieve all un-approved rewards
+        queryParameters: 
+            provider:
+                description: provider name
+                type: string
+                required: true
+        responses:
+            200:
+                body:
+                    application/json:
+                        example: |
+                            {
+                                "success": true,
+                                "data": [
+                                    {
+                                        "_id": "5d6d2bedaa02e215eff56d9f",
+                                        "scheme": {
+                                            "_id": "5d6d29eeaa02e215eff56d9b",
+                                            "skuCode": "battle-s0565a-01-l5",
+                                            "points": 2,
+                                            "conversionUnit": "INR",
+                                            "conversionRatio": 1,
+                                            "onlyForApprovedUsers": false,
+                                            "redeemApprovalRequired": false,
+                                            "dispatchToLevel": 4,
+                                            "provider": "ITC",
+                                            "scheme": {
+                                                "type": "milestone",
+                                                "redeemType": "inkind",
+                                                "milestone": 2,
+                                                "termination": 0
+                                            }
+                                        },
+                                        "user": {
+                                            "id": "5ce5377ca550878c4a807434",
+                                            "level": 4
+                                        },
+                                        "productId": [
+                                            1409578596,
+                                            5641863709
+                                        ],
+                                        "skuCode": "battle-s0565a-01-l5",
+                                        "scanUUID": [
+                                            "e36e1d00-00da-45f2-8454-8fbe3056c1c8",
+                                            "e36e1d00-00da-45f2-8454-8fbe3056c1c9"
+                                        ],
+                                        "approved": false,
+                                        "isClaimed": false,
+                                        "isClaimable": true,
+                                        "rewardCode": "RC-2C7E7",
+                                        "points": 4,
+                                        "progress": 100
+                                    }
+                                ],
+                                "pagination": {
+                                    "currentPage": 1,
+                                    "pageLimit": 20
+                                }
+                            }
+/rewards/get:
+    post:
+        description: Get All rewards dispatched to a user
+        body:
+           application/json:
+                example: |
+                    {
+                        "user": {
+                            "id": "5ce5377ca550878c4a807434",
+                            "level": 4
+                        },
+                        "rewardCodes": ["RC-2C7E7"]
+                    }
+        responses:
+            200:
+                body:
+                    application/json:
+                        example: |
+                            {
+                                "success": true,
+                                "data": [
+                                    {
+                                        "_id": "5d6d2bedaa02e215eff56d9f",
+                                        "scheme": {
+                                            "_id": "5d6d29eeaa02e215eff56d9b",
+                                            "skuCode": "battle-s0565a-01-l5",
+                                            "points": 2,
+                                            "conversionUnit": "INR",
+                                            "conversionRatio": 1,
+                                            "onlyForApprovedUsers": false,
+                                            "redeemApprovalRequired": false,
+                                            "dispatchToLevel": 4,
+                                            "provider": "ITC",
+                                            "scheme": {
+                                                "type": "milestone",
+                                                "redeemType": "inkind",
+                                                "milestone": 2,
+                                                "termination": 0
+                                            }
+                                        },
+                                        "user": {
+                                            "id": "5ce5377ca550878c4a807434",
+                                            "level": 4
+                                        },
+                                        "productId": [
+                                            1409578596,
+                                            5641863709
+                                        ],
+                                        "skuCode": "battle-s0565a-01-l5",
+                                        "scanUUID": [
+                                            "e36e1d00-00da-45f2-8454-8fbe3056c1c8",
+                                            "e36e1d00-00da-45f2-8454-8fbe3056c1c9"
+                                        ],
+                                        "approved": false,
+                                        "isClaimed": false,
+                                        "isClaimable": true,
+                                        "rewardCode": "RC-2C7E7",
+                                        "points": 4,
+                                        "progress": 100
+                                    }
+                                ],
+                                "pagination": {
+                                    "currentPage": 1,
+                                    "pageLimit": 20
+                                }
+                            }
+/rewards/redeemed-by:
+    post:
+        description: Get All redeemed rewards by the user
+        body:
+           application/json:
+                example: |
+                    {
+                        "user": {
+                            "id": "5bc08f3973562c001028938f",
+                            "level": 3
+                        }
+                    }
+        responses:
+            200:
+                body:
+                    application/json:
+                        example: |
+                            {
+                                "success": true,
+                                "data": [
+                                    {
+                                        "_id": "5d6e1d764553e106b16e3cf9",
+                                        "rewardCodes": "RC-2C7E7",
+                                        "dispatched": false,
+                                        "aggregatedCode": "RC-A4AFE",
+                                        "user": {
+                                            "for": {
+                                                "id": "5ce5377ca550878c4a807434",
+                                                "level": 4
+                                            },
+                                            "by": {
+                                                "level": 3,
+                                                "id": "5bc08f3973562c001028938f"
+                                            }
+                                        },
+                                        "points": 4,
+                                        "product": {
+                                            "expiry": "",
+                                            "encoding": "https://staging-o4s.in/v/e/1.1.84t_IN.F",
+                                            "active": false,
+                                            "parent": "",
+                                            "children": [],
+                                            "enabledAuthenticationModes": [
+                                                "sms",
+                                                "web",
+                                                "app"
+                                            ],
+                                            "sku": {
+                                                "code": "battle-s0565a-01-l4",
+                                                "name": "BATTLE",
+                                                "description": "",
+                                                "images": {
+                                                    "thumbnail": "",
+                                                    "medium": "",
+                                                    "high": ""
+                                                },
+                                                "packagingLevel": 1
+                                            },
+                                            "ownership": {
+                                                "transferRequest": {
+                                                    "isActive": false,
+                                                    "to": {
+                                                        "_id": "5b97af643e82c870af6c7f20",
+                                                        "phoneNumber": "+918171703734",
+                                                        "type": "MANUFACTURER",
+                                                        "name": "Atul Mittal",
+                                                        "address": {
+                                                            "country": "India",
+                                                            "state": "Uttarakhand",
+                                                            "city": "Dehradun",
+                                                            "district": "Sealqui",
+                                                            "address": {
+                                                                "line1": "Campus Activewear Pvt. Ltd.",
+                                                                "line2": "C9 & C10, Sealqui Industrial Area"
+                                                            },
+                                                            "pincode": "248011"
+                                                        },
+                                                        "companyCode": "campus-shoes",
+                                                        "level": 0
+                                                    },
+                                                    "from": {
+                                                        "_id": "5b97af643e82c870af6c7f20",
+                                                        "phoneNumber": "+918171703734",
+                                                        "type": "MANUFACTURER",
+                                                        "name": "Atul Mittal",
+                                                        "address": {
+                                                            "country": "India",
+                                                            "state": "Uttarakhand",
+                                                            "city": "Dehradun",
+                                                            "district": "Sealqui",
+                                                            "address": {
+                                                                "line1": "Campus Activewear Pvt. Ltd.",
+                                                                "line2": "C9 & C10, Sealqui Industrial Area"
+                                                            },
+                                                            "pincode": "248011"
+                                                        },
+                                                        "companyCode": "campus-shoes",
+                                                        "level": 0
+                                                    },
+                                                    "mode": "NONE",
+                                                    "status": "NONE",
+                                                    "confirmation": "NONE"
+                                                },
+                                                "owner": {
+                                                    "_id": "5b97af643e82c870af6c7f20",
+                                                    "phoneNumber": "+918171703734",
+                                                    "type": "MANUFACTURER",
+                                                    "name": "Atul Mittal",
+                                                    "address": {
+                                                        "country": "India",
+                                                        "state": "Uttarakhand",
+                                                        "city": "Dehradun",
+                                                        "district": "Sealqui",
+                                                        "address": {
+                                                            "line1": "Campus Activewear Pvt. Ltd.",
+                                                            "line2": "C9 & C10, Sealqui Industrial Area"
+                                                        },
+                                                        "pincode": "248011"
+                                                    },
+                                                    "companyCode": "campus-shoes",
+                                                    "level": 0
+                                                }
+                                            },
+                                            "ownershipHistory": [],
+                                            "hasReward": false,
+                                            "_id": "5b9d097058a914001028a75b",
+                                            "company": {
+                                                "code": "campus-shoes",
+                                                "numericCode": 15
+                                            },
+                                            "packagingLevel": 1,
+                                            "serialNo": 15110131154,
+                                            "productId": 8671716503,
+                                            "client": "campus-shoes",
+                                            "productDetails": {
+                                                "skuCode": "battle-s0565a-01-l4"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "pagination": {
+                                    "currentPage": 1,
+                                    "pageLimit": 20
+                                }
+                            }
+/rewards/redeemed-for:
+    post:
+        description: Get All redeemed rewards for the user
+        body:
+           application/json:
+                example: |
+                    {
+                        "user": {
+                            "id": "5ce5377ca550878c4a807434",
+                            "level": 4
+                        }
+                    }
+        responses:
+            200:
+                body:
+                    application/json:
+                        example: |
+                            {
+                                "success": true,
+                                "data": [
+                                    {
+                                        "_id": "5d6e1d764553e106b16e3cf9",
+                                        "rewardCodes": "RC-2C7E7",
+                                        "dispatched": false,
+                                        "aggregatedCode": "RC-A4AFE",
+                                        "user": {
+                                            "for": {
+                                                "id": "5ce5377ca550878c4a807434",
+                                                "level": 4
+                                            },
+                                            "by": {
+                                                "level": 3,
+                                                "id": "5bc08f3973562c001028938f"
+                                            }
+                                        },
+                                        "points": 4,
+                                        "product": {
+                                            "expiry": "",
+                                            "encoding": "https://staging-o4s.in/v/e/1.1.84t_IN.F",
+                                            "active": false,
+                                            "parent": "",
+                                            "children": [],
+                                            "enabledAuthenticationModes": [
+                                                "sms",
+                                                "web",
+                                                "app"
+                                            ],
+                                            "sku": {
+                                                "code": "battle-s0565a-01-l4",
+                                                "name": "BATTLE",
+                                                "description": "",
+                                                "images": {
+                                                    "thumbnail": "",
+                                                    "medium": "",
+                                                    "high": ""
+                                                },
+                                                "packagingLevel": 1
+                                            },
+                                            "ownership": {
+                                                "transferRequest": {
+                                                    "isActive": false,
+                                                    "to": {
+                                                        "_id": "5b97af643e82c870af6c7f20",
+                                                        "phoneNumber": "+918171703734",
+                                                        "type": "MANUFACTURER",
+                                                        "name": "Atul Mittal",
+                                                        "address": {
+                                                            "country": "India",
+                                                            "state": "Uttarakhand",
+                                                            "city": "Dehradun",
+                                                            "district": "Sealqui",
+                                                            "address": {
+                                                                "line1": "Campus Activewear Pvt. Ltd.",
+                                                                "line2": "C9 & C10, Sealqui Industrial Area"
+                                                            },
+                                                            "pincode": "248011"
+                                                        },
+                                                        "companyCode": "campus-shoes",
+                                                        "level": 0
+                                                    },
+                                                    "from": {
+                                                        "_id": "5b97af643e82c870af6c7f20",
+                                                        "phoneNumber": "+918171703734",
+                                                        "type": "MANUFACTURER",
+                                                        "name": "Atul Mittal",
+                                                        "address": {
+                                                            "country": "India",
+                                                            "state": "Uttarakhand",
+                                                            "city": "Dehradun",
+                                                            "district": "Sealqui",
+                                                            "address": {
+                                                                "line1": "Campus Activewear Pvt. Ltd.",
+                                                                "line2": "C9 & C10, Sealqui Industrial Area"
+                                                            },
+                                                            "pincode": "248011"
+                                                        },
+                                                        "companyCode": "campus-shoes",
+                                                        "level": 0
+                                                    },
+                                                    "mode": "NONE",
+                                                    "status": "NONE",
+                                                    "confirmation": "NONE"
+                                                },
+                                                "owner": {
+                                                    "_id": "5b97af643e82c870af6c7f20",
+                                                    "phoneNumber": "+918171703734",
+                                                    "type": "MANUFACTURER",
+                                                    "name": "Atul Mittal",
+                                                    "address": {
+                                                        "country": "India",
+                                                        "state": "Uttarakhand",
+                                                        "city": "Dehradun",
+                                                        "district": "Sealqui",
+                                                        "address": {
+                                                            "line1": "Campus Activewear Pvt. Ltd.",
+                                                            "line2": "C9 & C10, Sealqui Industrial Area"
+                                                        },
+                                                        "pincode": "248011"
+                                                    },
+                                                    "companyCode": "campus-shoes",
+                                                    "level": 0
+                                                }
+                                            },
+                                            "ownershipHistory": [],
+                                            "hasReward": false,
+                                            "_id": "5b9d097058a914001028a75b",
+                                            "company": {
+                                                "code": "campus-shoes",
+                                                "numericCode": 15
+                                            },
+                                            "packagingLevel": 1,
+                                            "serialNo": 15110131154,
+                                            "productId": 8671716503,
+                                            "client": "campus-shoes",
+                                            "productDetails": {
+                                                "skuCode": "battle-s0565a-01-l4"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "pagination": {
+                                    "currentPage": 1,
+                                    "pageLimit": 20
+                                }
+                            }

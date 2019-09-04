@@ -1,0 +1,15 @@
+{
+  "apps": [
+    {
+      "name": "reward-service",
+      "script": "./dist/main.js",
+      "instances": "1",
+      "exec_mode": "cluster",
+      "merge_logs": true,
+      "log_file": "logs/combined.outerr.log",
+      "out_file": "logs/out.log",
+      "error_file": "logs/err.log",
+      "log_date_format": "YYYY-MM-DD HH:mm Z"
+    }
+  ]
+}
