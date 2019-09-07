@@ -17,7 +17,7 @@ create)
     curl -u $user:$password https://api.github.com/user/repos -d '{"name":"'$2'", "private": '$ans'}'
 ;;
 delete)
-    curl -u $user:$password -X DELETE https://api.github.com/repos/sacros/$2
+    curl -u $user:$password -X DELETE https://api.github.com/repos/$user/$2
 ;;
 *)
     echo "\nSorry, couldn't understand. Available options are:\ncreate:  create new repo\ndelete:  deletes an existing repo"
